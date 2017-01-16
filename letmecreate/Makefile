@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/francois-berder/LetMeCreate.git
+PKG_SOURCE_URL:=https://github.com/CreatorDev/LetMeCreate.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
