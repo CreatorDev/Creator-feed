@@ -21,7 +21,7 @@ define Package/letmecreate
   SECTION:=libs
   CATEGORY:=Libraries
   TITLE:=LetMeCreate
-  DEPENDS:=@TARGET_pistachio +libpthread +kmod-spi-dev
+  DEPENDS:=@TARGET_pistachio +libpthread
 endef
 
 define Package/letmecreate/description
