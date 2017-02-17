@@ -23,7 +23,7 @@ def creatorPackages = [
 properties([
     buildDiscarder(logRotator(numToKeepStr: '30')),
     parameters([
-        stringParam(defaultValue: 'http://downloads.creatordev.io/openwrt/latest/pistachio/marduk/OpenWrt-SDK-v1.0.1-pistachio-marduk_gcc-5.3.0_musl-1.1.15.Linux-x86_64.tar.bz2',
+        stringParam(defaultValue: 'http://downloads.creatordev.io/openwrt/latest/pistachio/marduk/OpenWrt-SDK-v1.1.0-pistachio_gcc-5.3.0_musl-1.1.15.Linux-x86_64.tar.bz2',
             description: 'OpenWrt SDK tarball to use', name: "SDK_TARBALL"),
     ])
 ])
