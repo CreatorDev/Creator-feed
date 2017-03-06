@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=letmecreate
-PKG_VERSION:=1.5.0
+PKG_VERSION:=1.5.2
 PKG_RELEASE:=1
 
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
@@ -43,6 +43,9 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(STAGING_DIR)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so $(STAGING_DIR)/usr/lib/
 
+	$(INSTALL_DIR) $(STAGING_DIR)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.a $(STAGING_DIR)/usr/lib/
+
 	$(INSTALL_DIR) $(STAGING_DIR)/usr/lib/cmake/LetMeCreate
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cmake/LetMeCreate/*.cmake $(STAGING_DIR)/usr/lib/cmake/LetMeCreate
 endef
@@ -57,6 +60,9 @@ define Package/letmecreate/install
 
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so $(1)/usr/lib/
+
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.a $(1)/usr/lib/
 
 	$(INSTALL_DIR) $(1)/usr/include/letmecreate
 	$(CP) $(PKG_INSTALL_DIR)/usr/include/* $(1)/usr/include/
