@@ -75,7 +75,12 @@ node('docker && imgtec') {
                         throw err
                     }
                     echo 'Parallel build failed, attempting to continue in single threaded mode'
-                    sh "make package/${item}/compile -j1 V=s"
+                    try {
+                        sh "make package/${item}/compile -j1 V=s"
+                    } catch (exc) {
+                        echo "Caught: ${exc}"
+                        currentBuild.result = 'FAILURE'
+                    }
                 }
             }
             // Add package signing key
