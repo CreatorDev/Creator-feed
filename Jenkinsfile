@@ -8,6 +8,20 @@
  *
  */
 
+import groovy.json.JsonSlurper
+
+@NonCPS
+def jsonParse(def jsonUrl) {
+    def result = new JsonSlurper().parse(jsonUrl)
+    return result
+}
+
+def getLatestSdkUrl() {
+    def ci40 = jsonParse(new URL('http://downloads.creatordev.io/openwrt/release.json'))
+    def latestSdkUrl = "http://downloads.creatordev.io/openwrt/latest/pistachio/marduk/OpenWrt-SDK-${ci40.versions.openwrt}-${ci40.board}_${ci40.versions.toolchain}.tar.bz2"
+    return latestSdkUrl
+}
+
 def creatorPackages = [
     'awalwm2m',
     'bit-bang-gpio',
@@ -23,7 +37,7 @@ def creatorPackages = [
 properties([
     buildDiscarder(logRotator(numToKeepStr: '30')),
     parameters([
-        stringParam(defaultValue: 'http://downloads.creatordev.io/openwrt/ci40-v1.1.1/pistachio/marduk/OpenWrt-SDK-ci40-v1.1.1-pistachio_gcc-5.3.0_musl-1.1.15.Linux-x86_64.tar.bz2',
+        stringParam(defaultValue: getLatestSdkUrl(),
             description: 'OpenWrt SDK tarball to use', name: "SDK_TARBALL"),
     ])
 ])
